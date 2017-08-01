@@ -6,14 +6,19 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.Toolbar
 import com.shmakova.weather.R
+import com.shmakova.weather.presentation.weather.WeatherFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        if (savedInstanceState == null) {
+            changeFragment(WeatherFragment())
+        }
     }
 
     fun changeFragment(f: Fragment, cleanStack: Boolean = false) {
